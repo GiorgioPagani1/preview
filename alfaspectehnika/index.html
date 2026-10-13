@@ -1,0 +1,444 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><meta name="description" content="Демонстрационная версия сайта Альфаспецтехника: аренда колёсных, гусеничных, мини-экскаваторов и экскаваторов-погрузчиков в Кирове."><title>АЛЬФАСПЕЦТЕХНИКА — аренда экскаваторов в Кирове | Демо</title><style>
+:root {
+  --navy:#23394f;--navy-dark:#182a3c;--blue:#315d88;--blue-hover:#244a70;
+  --text:#202c38;--muted:#637183;--line:#dfe5ec;--bg:#f5f7fa;
+  --surface:#fff;--soft:#ecf2f7;--radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;overflow-x:hidden;color:var(--text);background:var(--surface);font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:none}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid #9cbad8;outline-offset:2px}
+.container{width:min(100% - 64px,1190px);margin:0 auto}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{line-height:1.18;letter-spacing:-.025em}
+em{font:inherit;color:inherit}
+/* Notice + navigation */
+.demo-notice{background:#f1f4f7;border-bottom:1px solid #e1e6ec;color:#5f6f80;font-size:12px}
+.notice-inner{min-height:33px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.notice-inner strong{color:#394e63;font-weight:700}
+.notice-inner a{color:var(--blue);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.header{background:#fff;position:sticky;top:0;z-index:80;border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:82px;gap:25px}
+.logo{display:flex;align-items:center;gap:11px;min-width:215px}
+.logo-icon{width:47px;height:43px;flex:none;background:var(--navy);border-radius:5px;display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800;letter-spacing:-.05em}
+.logo-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.logo-txt strong{font-size:13px;font-weight:800;letter-spacing:.02em;line-height:1.25}
+.logo-txt small{font-size:10px;color:#788493;line-height:1.2}
+.desktop-nav{display:flex;align-items:center;gap:20px;font-size:12px;font-weight:650;white-space:nowrap}
+.desktop-nav a{color:#455569}
+.desktop-nav a:hover{color:var(--blue)}
+.header-actions{display:flex;align-items:center;gap:15px}
+.header-phone{font-weight:800;font-size:15px;color:var(--navy);white-space:nowrap;display:flex;flex-wrap:nowrap;align-items:center}
+.header-phone strong{white-space:nowrap}
+.menu-toggle,.mobile-nav{display:none}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 20px;min-height:47px;border-radius:7px;border:1px solid transparent;font-size:13px;font-weight:750;text-align:center;line-height:1.3;white-space:normal;transition:background-color .16s,border-color .16s}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:#fff!important}
+.btn-primary:hover{background:var(--blue-hover);border-color:var(--blue-hover);color:#fff!important}
+.btn-primary span{color:#fff}
+.btn-dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-dark);color:#fff}
+.btn-outline{background:#fff;border-color:#b8c7d6;color:var(--navy)!important}
+.btn-outline:hover{background:#eef3f8;border-color:#8ca7c3;color:var(--navy)!important}
+.btn-white{background:#fff;border-color:#fff;color:var(--navy)}
+.btn-dark-outline{border-color:#adc0d3;color:var(--navy);background:transparent}
+.btn.small{min-height:40px;padding:10px 13px;font-size:12px}
+/* Hero */
+.hero-section{background:var(--bg);border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.91fr);gap:55px;align-items:center;padding:55px 0 60px}
+.hero-location{display:inline-block;color:var(--blue);font-size:12px;font-weight:750;margin-bottom:15px}
+.hero-copy h1{font-size:clamp(37px,3.7vw,52px);font-weight:800;line-height:1.12;margin:0 0 21px;letter-spacing:-.042em;max-width:590px}
+.hero-description{font-size:16px;line-height:1.68;color:#5c6a7b;max-width:570px;margin-bottom:26px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:28px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:9px 18px;border-top:1px solid #dce4ec;padding-top:20px;color:#596b7e;font-size:12px;font-weight:600}
+.hero-facts span::before{content:'✓';display:inline-grid;place-items:center;border:1px solid #a9bdcf;border-radius:50%;font-size:10px;color:var(--blue);width:17px;height:17px;margin-right:7px}
+.hero-visual{align-self:stretch;background:#fff;border:1px solid #dce5ed;border-radius:11px;overflow:hidden;display:flex;flex-direction:column;min-height:350px;max-height:410px}
+.hero-image-wrap{position:relative;flex:1;min-height:0;background:#eaf0f5}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-image-caption{padding:13px 18px;background:#fff;color:#56677a;border-top:1px solid var(--line);font-size:12px;font-weight:650}
+.image-shell{position:relative}
+.image-shell img{position:relative;z-index:2}
+.image-missing{position:absolute;inset:0;background:#eaf0f5;color:#728395;z-index:1;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:650}
+/* Service shortcuts */
+.services-section{background:#fff;border-bottom:1px solid var(--line)}
+.services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:17px 0}
+.service-item{display:flex;align-items:center;gap:12px;padding:15px 18px;min-height:73px;border-right:1px solid #e0e7ee;transition:background .15s}
+.service-item:first-child{padding-left:0}
+.service-item:last-child{border-right:0}
+.service-item:hover{background:#f2f6fa}
+.service-symbol{background:#e7eff7;color:var(--blue);display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:6px;font-size:19px}
+.service-item div{display:flex;flex-direction:column;min-width:0;gap:2px}
+.service-item strong{font-size:13px;line-height:1.3}
+.service-item small{font-size:11px;color:#738295;line-height:1.35}
+/* Shared sections */
+.section{padding:74px 0 82px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:27px}
+.section-head h2,.faq-grid h2,.contacts-top h2{font-size:clamp(27px,2.8vw,37px);font-weight:800;margin:0 0 10px;color:var(--navy)}
+.section-description{font-size:14px;color:#687789;line-height:1.6;margin:0;max-width:640px}
+.catalog-count{white-space:nowrap;color:#6e7e90;font-size:13px;margin-bottom:4px}
+.catalog-count strong{color:var(--navy);font-weight:750}
+/* Fleet */
+.fleet-section{background:#fff}
+.catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 22px}
+.filter-list{display:flex;gap:7px;flex-wrap:wrap}
+.filter-chip{border:1px solid #d7e0ea;background:#fff;border-radius:7px;padding:10px 14px;min-height:42px;white-space:nowrap;font-weight:650;font-size:12px;color:#536479}
+.filter-chip:hover{background:#eff4f9}
+.filter-chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.search-box{display:flex;align-items:center;gap:9px;border:1px solid #d7e0ea;border-radius:7px;min-width:225px;padding:0 12px;min-height:42px;color:#8896a5;background:#fff}
+.search-box input{border:0;background:transparent;min-width:0;width:100%;font-size:12px;color:var(--navy);outline:0}
+.search-box input:focus-visible{outline:0}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.machine-card{min-width:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid #dfe5eb;border-radius:9px;background:#fff}
+.machine-picture{height:205px;background:#f0f3f7;overflow:hidden;position:relative}
+.machine-picture img{display:block;width:100%;height:100%;object-fit:contain;padding:8px}
+.picture-label{position:absolute;top:12px;left:12px;z-index:3;background:#ffffffef;border:1px solid #e0e6ec;border-radius:4px;padding:5px 8px;color:#536579;font-size:10px;font-weight:750}
+.machine-body{padding:19px;flex:1;display:flex;flex-direction:column}
+.machine-body h3{font-size:18px;line-height:1.3;margin-bottom:6px;letter-spacing:-.03em}
+.machine-body p{font-size:12px;color:#6b7b8e;margin-bottom:10px;line-height:1.55}
+.machine-spec{font-size:11px;color:#647589;margin:0 0 10px}
+.machine-details{display:flex;align-items:end;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:auto;padding-top:15px}
+.machine-rate small{display:block;font-size:11px;color:#738193;margin-bottom:1px}
+.machine-rate strong{display:block;font-size:21px;font-weight:800;color:var(--navy);white-space:nowrap}
+.machine-rate strong span{font-size:11px;font-weight:650;color:#708093}
+.machine-cta{border:1px solid #a6bbd0;border-radius:6px;background:#fff;color:var(--blue);font-size:12px;font-weight:800;padding:10px 13px;min-height:40px;white-space:nowrap}
+.machine-cta:hover{border-color:var(--blue);background:#edf4fa}
+.catalog-empty{background:var(--bg);padding:30px;border:1px solid var(--line);border-radius:8px;text-align:center;color:var(--muted)}
+.catalog-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#f2f6fa;border:1px solid #e0e8f0;border-radius:8px;margin-top:20px;padding:18px 22px}
+.catalog-bottom p{margin:0;color:#586a7e;font-size:13px}
+.catalog-bottom p strong{color:var(--navy)}
+.text-link{font-size:13px;white-space:nowrap;color:var(--blue);font-weight:750}
+.text-link:hover{text-decoration:underline;text-underline-offset:4px}
+/* Materials */
+.concrete-section{background:var(--bg);border-top:1px solid #e3e8ee;border-bottom:1px solid #e3e8ee}
+.concrete-layout{display:grid;grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);gap:20px;align-items:stretch}
+.material-visual{background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.material-photo{background:#eaf0f5;position:relative;min-height:245px;height:245px}
+.material-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.material-description{padding:22px 23px;display:flex;flex-direction:column;flex:1}
+.material-description strong{font-size:18px;color:var(--navy);font-weight:800;margin-bottom:8px}
+.material-description p{font-size:13px;color:#6e7d8d;margin:0 0 18px}
+.material-link{font-size:13px;font-weight:800;color:var(--blue);margin-top:auto}
+.material-catalog{background:#fff;border:1px solid var(--line);border-radius:9px;padding:22px;display:flex;flex-direction:column;min-width:0}
+.material-switch{display:flex;gap:4px;overflow:auto;border-bottom:1px solid var(--line);margin-bottom:18px;padding-bottom:7px}
+.material-switch button{border:0;background:transparent;border-radius:5px;padding:10px 9px;font-size:12px;color:#68798c;font-weight:700;white-space:nowrap;min-width:0;flex:1}
+.material-switch button.active{background:#eaf1f8;color:var(--blue)}
+.material-price-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.material-price{display:flex;align-items:center;justify-content:space-between;gap:9px;background:#fbfcfd;border:1px solid #e1e7ee;border-radius:6px;text-align:left;padding:12px 13px}
+.material-price:hover{border-color:#9db6cf;background:#f5f9fd}
+.material-price strong{font-size:13px;color:var(--navy)}
+.material-price span{font-size:13px;font-weight:750;color:var(--navy);white-space:nowrap}
+.material-price small{font-size:10px;color:#728296;font-weight:500}
+.material-note{display:flex;gap:9px;color:#687789;margin:14px 0 17px;font-size:11px;line-height:1.5}
+.material-note>span{display:grid;place-items:center;flex:none;width:17px;height:17px;border:1px solid #9eacbc;border-radius:50%;font:11px/1 Arial,sans-serif;color:#708295}
+.material-note p{margin:0}
+.btn.full{width:100%;margin-top:auto}
+/* Form */
+.order-section{background:#fff}
+.order-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.85fr);gap:20px;align-items:start}
+.order-form-card,.estimate-card{min-width:0;background:#fff;border:1px solid #dce4ec;border-radius:10px;padding:28px}
+.form-intro h3,.form-divider h3{font-size:18px;color:var(--navy);font-weight:800;margin:4px 0 17px}
+.step-label{display:block;color:var(--blue);font-size:12px;font-weight:800;margin-bottom:5px}
+.mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 24px}
+.mode-btn{background:#fff;border:1px solid #d9e2eb;border-radius:7px;min-height:58px;display:flex;align-items:center;gap:10px;color:#526377;padding:11px 15px;font-size:13px;font-weight:750;text-align:left}
+.mode-btn.active{border-color:var(--blue);background:#eef5fb;color:var(--blue)}
+.mode-icon{display:grid;place-items:center;width:29px;height:29px;background:#f0f3f7;border-radius:5px;color:#42688e;font-size:16px;flex:none}
+.mode-btn.active .mode-icon{background:#dceaf6}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.span2{grid-column:1/-1}
+.field>span{font-size:12px;font-weight:700;color:#455469}
+.field>span b{color:#bf4a49}
+.field input,.field select,.field textarea{background:#fff;color:var(--text);width:100%;min-width:0;border:1px solid #cdd9e4;border-radius:7px;padding:12px 12px;min-height:47px;outline:0;font-size:14px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#7097bd;box-shadow:0 0 0 3px #e5eef6}
+.field textarea{resize:vertical;min-height:97px}
+.number-wrap{display:flex;align-items:center;border:1px solid #cdd9e4;border-radius:7px;overflow:hidden}
+.number-wrap input{border:0;text-align:center;min-width:0;appearance:textfield;-moz-appearance:textfield;padding:9px 0;box-shadow:none!important}
+.number-wrap input::-webkit-outer-spin-button,.number-wrap input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num-btn{width:42px;min-height:46px;border:0;background:#f0f4f8;color:var(--blue);font-size:21px;font-weight:600;flex:none}
+.num-btn:hover{background:#dfebf5}
+.checkbox-line{margin-top:16px;font-size:13px;color:#4e5f71}
+.checkbox-line label{display:inline-flex;align-items:center;gap:9px;cursor:pointer}
+.checkbox-line input{width:17px;height:17px;accent-color:var(--blue)}
+.fake-check{display:none}
+.checkbox-line small{color:#7b8796}
+.form-divider{border-top:1px solid var(--line);margin:28px 0 19px;padding-top:25px}
+.consent{display:flex;gap:11px;align-items:flex-start;margin-top:24px;font-size:11px;color:#728093;line-height:1.6}
+.consent input{width:17px;height:17px;accent-color:var(--blue);margin:1px 0 0;flex:none}
+.consent a{color:var(--blue);text-decoration:underline}
+.validation-error{color:#aa3434;background:#fff1f0;padding:12px;border:1px solid #efc9c8;border-radius:5px;margin:16px 0}
+.submit-btn{width:100%;margin-top:19px;font-size:14px;min-height:51px}
+.submit-small{font-size:11px;color:#7b8796;text-align:center;margin:11px 0 0}
+/* Estimate */
+.estimate-card{position:sticky;top:105px;background:#f8fafc;padding:25px}
+.estimate-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:8px}
+.estimate-top h3{font-size:19px;margin:0;color:var(--navy)}
+.estimate-icon{background:#e6eef6;color:var(--blue);width:33px;height:33px;border-radius:7px;display:grid;place-items:center;font-size:18px;font-weight:800}
+.estimate-item{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid #e0e8ef;border-radius:7px;background:#fff;margin-bottom:18px;min-width:0}
+.estimate-thumb{flex:none;width:75px;height:65px;background:#eaf0f5;overflow:hidden;border-radius:5px}
+.estimate-thumb img{width:100%;height:100%;object-fit:contain}
+.estimate-item>div:last-child{min-width:0;display:flex;flex-direction:column;gap:1px}
+.estimate-item strong{font-size:14px;color:var(--navy);line-height:1.25}
+.estimate-overline{font-size:11px;color:#718195;line-height:1.4}
+.estimate-line{display:flex;gap:15px;justify-content:space-between;align-items:center;margin:12px 0;color:#68798b;font-size:12px}
+.estimate-line strong{color:var(--navy);text-align:right;white-space:nowrap;font-size:12px}
+.estimate-unknown{font-weight:600!important;color:#7b8999!important}
+.estimate-total{border-top:1px solid #dbe3eb;margin-top:18px;padding-top:19px;display:flex;flex-direction:column;gap:4px}
+.estimate-total>span{font-size:12px;color:#718094}
+.estimate-total>strong{font-size:35px;line-height:1.2;color:var(--navy);font-weight:850;letter-spacing:-.04em}
+.estimate-total small{font-size:11px;line-height:1.5;color:#8490a0;margin-top:2px}
+.estimate-helper{color:#728194;background:#edf2f7;border-radius:6px;margin-top:19px;padding:12px;font-size:11px;line-height:1.6}
+.estimate-phone{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #dde4ec;margin-top:19px;padding-top:17px;color:#68798b;font-size:12px}
+.estimate-phone strong{color:var(--blue);white-space:nowrap}
+/* Conditions */
+.benefits-section{background:var(--bg);border-top:1px solid var(--line)}
+.benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.benefits-grid article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:21px}
+.benefits-grid h3{font-size:16px;line-height:1.35;margin-bottom:10px;color:var(--navy)}
+.benefits-grid p{font-size:12px;color:#6e7e8f;line-height:1.6;margin:0}
+/* FAQ */
+.faq-section{padding:76px 0;background:#fff}
+.faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:75px}
+.faq-grid>div:first-child>p{color:#6e7c8d;font-size:14px;margin:5px 0 20px}
+.faq-items details{border-bottom:1px solid var(--line)}
+.faq-items details:first-child{border-top:1px solid var(--line)}
+.faq-items summary{list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center;cursor:pointer;font-size:14px;color:var(--navy);font-weight:750;padding:17px 0}
+.faq-items summary::-webkit-details-marker{display:none}
+.faq-items summary span{font-size:20px;color:var(--blue);font-weight:400}
+.faq-items details[open] summary span{transform:rotate(45deg)}
+.faq-items details p{font-size:13px;color:#68798b;line-height:1.65;margin:-2px 0 18px}
+/* Contacts */
+.contact-section{background:#f0f4f8;border-top:1px solid var(--line)}
+.contacts-top{padding:62px 0;display:grid;grid-template-columns:.95fr 1.05fr;gap:60px}
+.contacts-top h2{margin-bottom:13px}
+.contacts-top>div:first-child>p{font-size:14px;color:#657589;line-height:1.6;max-width:380px;margin-bottom:20px}
+.contact-buttons{display:flex;flex-wrap:wrap;gap:10px}
+.contact-main-number{display:block;color:var(--navy);font-size:clamp(23px,2.4vw,32px);font-weight:800;line-height:1.25;white-space:nowrap;letter-spacing:-.025em;margin-bottom:24px}
+.contact-details{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.contact-details div:first-child{grid-column:1/-1}
+.contact-details span{font-size:10px;color:#758699;letter-spacing:.07em;font-weight:800}
+.contact-details a,.contact-details p{display:block;font-size:13px;color:#3e5167;margin:5px 0 0;font-weight:650}
+.footer-base{border-top:1px solid #d5dfe9;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:22px 0 27px}
+.footer-brand{font-size:13px;font-weight:800;color:var(--navy)}
+.footer-base>div:nth-child(2){font-size:11px;color:#768697;display:flex;gap:4px;flex-direction:column}
+.footer-base>div:nth-child(2) a{text-decoration:underline;color:var(--blue)}
+.back-top{font-size:12px;font-weight:700;color:var(--blue);white-space:nowrap}
+/* Confirmation modal */
+.modal-shell{position:fixed;inset:0;z-index:150;display:flex;justify-content:center;align-items:center;padding:20px}
+.modal-scrim{position:absolute;inset:0;background:#111e2dcc;backdrop-filter:blur(2px)}
+.modal-panel{position:relative;background:#fff;border-radius:10px;padding:32px;max-width:610px;width:100%;max-height:92dvh;overflow:auto;box-shadow:0 20px 80px #0d203855}
+.modal-close{position:absolute;top:14px;right:15px;border:0;border-radius:50%;width:33px;height:33px;font-size:23px;background:#edf2f7;color:var(--navy)}
+.modal-success{width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:#e6eef7;color:var(--blue);font-size:21px;margin-bottom:18px}
+.modal-panel .section-kicker{font-size:11px;color:#687b90;font-weight:700;margin-bottom:5px}
+.modal-panel h2{font-size:26px;color:var(--navy);margin:0 0 10px}
+.modal-lead{font-size:13px;color:#66768a;margin-bottom:18px}
+.modal-preview{white-space:pre-wrap;background:#f6f8fb;border:1px solid #e0e6ed;border-radius:6px;padding:16px;font-size:12px;line-height:1.7;color:#42546a;max-height:300px;overflow:auto}
+.modal-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.modal-actions .btn{flex:1 1 195px}
+.modal-note{font-size:11px;color:#778697;line-height:1.55;margin:13px 0 0}
+.toast{position:fixed;z-index:300;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:.25s;background:var(--navy);color:white;padding:11px 17px;border-radius:6px;font-size:12px;box-shadow:0 9px 25px #213a4f40}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.sticky-mobile-order{display:none}
+/* Responsive layout */
+@media(max-width:1200px){.header-inner{gap:14px}.desktop-nav{gap:11px;font-size:11px}.logo{min-width:196px}.header-phone{font-size:13px}.hero-grid{gap:28px}}
+@media(max-width:1040px){.desktop-nav{display:none}.header-phone{display:flex}.menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:transparent;border:1px solid #dce4ed;border-radius:6px;width:40px;height:40px;flex:none}.menu-toggle span{display:block;width:19px;height:2px;background:var(--navy)}.mobile-nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;box-shadow:0 15px 20px #213a4f19;padding:8px max(24px,calc((100vw - 1190px)/2));border-bottom:1px solid var(--line)}.mobile-nav:not([hidden]){display:flex}.mobile-nav a{border-bottom:1px solid #edf1f5;padding:12px 0;color:var(--navy);font-size:14px;font-weight:650}.catalog-tools{align-items:stretch;flex-direction:column}.search-box{width:100%}.benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-item{padding-inline:12px}.service-item small{font-size:10px}}
+@media(max-width:790px){.container{width:min(100% - 36px,680px)}.header-inner{min-height:69px}.header-phone{display:none}.desktop-order{display:none}.hero-grid{grid-template-columns:1fr;padding:33px 0 37px;gap:26px}.hero-copy h1{font-size:clamp(33px,7vw,46px)}.hero-description{font-size:15px}.hero-visual{height:285px;max-height:340px;min-height:250px}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px 0}.service-item{border-right:0;border-bottom:1px solid #e2e9f0;padding:12px 9px!important;min-height:70px}.service-item:nth-child(odd){border-right:1px solid #e2e9f0}.service-item:nth-child(n+3){border-bottom:0}.section{padding:54px 0}.section-head{align-items:start}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.machine-picture{height:190px}.machine-body{padding:15px}.machine-details{flex-wrap:wrap}.machine-cta{width:100%}.concrete-layout{grid-template-columns:1fr}.material-photo{height:225px}.order-layout{grid-template-columns:1fr}.estimate-card{position:static;order:-1}.faq-grid{grid-template-columns:1fr;gap:21px}.faq-section{padding:56px 0}.contacts-top{grid-template-columns:1fr;gap:26px;padding:48px 0}.contact-main-number{font-size:26px}}
+@media(max-width:530px){.container{width:calc(100% - 32px)}.notice-inner{min-height:36px;font-size:10px}.notice-inner a{font-size:10px}.logo-icon{width:40px;height:39px}.logo-txt strong{font-size:11px}.logo-txt small{font-size:9px}.hero-copy h1{font-size:34px;line-height:1.15}.hero-description{font-size:14px}.hero-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}.hero-buttons .btn{min-height:48px;padding:10px 7px;font-size:12px}.hero-facts{font-size:11px;gap:8px 11px}.hero-visual{height:230px;min-height:230px}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-item{gap:7px}.service-symbol{width:27px;height:27px;flex:none;font-size:15px}.service-item strong{font-size:11px}.service-item small{font-size:10px}.section-head{display:block;margin-bottom:23px}.section-head h2,.faq-grid h2,.contacts-top h2{font-size:27px;line-height:1.2}.catalog-count{display:inline-block;margin-top:9px}.filter-list{flex-wrap:nowrap;overflow-x:auto;max-width:calc(100vw - 32px);padding-bottom:5px;scrollbar-width:none}.filter-list::-webkit-scrollbar{display:none}.filter-chip{flex:none}.catalog-grid{grid-template-columns:1fr}.machine-picture{height:215px}.machine-details{flex-wrap:nowrap}.machine-cta{width:auto;min-width:118px}.catalog-bottom{display:block;padding:16px}.catalog-bottom p{margin-bottom:10px}.material-photo{height:205px}.material-description{padding:19px}.material-catalog{padding:16px}.material-switch{gap:2px;overflow-x:auto}.material-switch button{flex:none;padding:10px 11px;font-size:11px}.material-price{padding:11px 9px;gap:5px}.material-price strong{font-size:12px}.material-price span{font-size:11px}.material-price small{font-size:9px}.order-form-card,.estimate-card{padding:18px}.estimate-card{order:0}.form-grid{grid-template-columns:1fr;gap:14px}.field.span2{grid-column:auto}.mode-switch{gap:7px}.mode-btn{padding:10px 8px;font-size:11px;min-height:55px;gap:6px}.mode-icon{width:23px;height:23px;font-size:14px}.modal-panel{padding:26px 18px}.contacts-top{padding:43px 0}.contact-buttons .btn{flex:1 1 150px;padding-inline:11px;font-size:12px}.contact-details{gap:16px}.footer-base{flex-wrap:wrap;align-items:start}.footer-base>div:nth-child(2){order:3;flex-basis:100%}.back-top{margin-left:auto}.sticky-mobile-order{display:flex;align-items:center;justify-content:center;position:fixed;z-index:65;bottom:12px;left:16px;right:16px;background:var(--blue);color:#fff!important;border-radius:7px;box-shadow:0 8px 24px #1f3b5950;min-height:48px;font-weight:800;font-size:13px}.sticky-mobile-order.hide{display:none}}
+@media(max-width:355px){.logo-txt small{display:none}.hero-copy h1{font-size:31px}.hero-buttons{grid-template-columns:1fr}.material-price-list{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+
+
+/* Adaptation for ALFASPECTEHNIKA — based on the original preview design */
+:root{--navy:#203a54;--navy-dark:#152b40;--blue:#315d88;--blue-hover:#24496e;--text:#202c38;--muted:#637183}
+body{font-size:15px}.brand-mark{width:46px;height:46px;object-fit:contain;border-radius:5px;background:#fff;border:1px solid #e4e8ed;flex:none}
+.logo{min-width:205px}.logo-txt strong{font-size:12px}.desktop-nav{gap:17px}
+.hero-grid{padding:64px 0 67px}.hero-copy h1{max-width:650px}.hero-visual{min-height:375px;max-height:480px}
+.hero-image-wrap img{object-fit:cover}.hero-image-caption{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hero-image-caption small{font-size:10px;color:#8592a1}
+.machine-picture img{object-fit:cover;padding:0}
+.machine-picture.no-photo{background:linear-gradient(135deg,#e8eef4,#d5e1ec);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#284660}
+.machine-picture.no-photo b{font-size:45px;line-height:1}.machine-picture.no-photo small{font-size:11px;color:#64798c}
+.machine-body{min-height:230px}.machine-body .machine-spec{min-height:34px}
+.catalog-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.facts-section{background:#f4f7fa;border-block:1px solid var(--line);padding:33px 0}
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.fact{display:flex;align-items:center;gap:17px;border-right:1px solid #d6e0e9;padding:4px 20px}
+.fact:first-child{padding-left:0}.fact:last-child{border:0}
+.fact strong{display:block;font-size:26px;line-height:1.2;color:var(--navy)}
+.fact span{display:block;font-size:12px;color:#697c90;margin-top:4px}
+.fact-icon{width:42px;height:42px;object-fit:contain}
+.work-section{background:#fff}.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.work-photo{height:350px;border-radius:10px;overflow:hidden;background:#e6ebf1}
+.work-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.work-content{padding:22px 0}.work-content h2{font-size:clamp(28px,2.8vw,38px);color:var(--navy);margin-bottom:17px}
+.work-content p{color:#617284;line-height:1.72;font-size:14px;margin:0 0 17px}
+.work-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.work-tags span{background:#edf2f7;color:#31506e;border:1px solid #dce5ee;padding:8px 11px;border-radius:5px;font-size:12px;font-weight:650}
+.order-section{background:#f4f7fa}.order-layout{grid-template-columns:minmax(0,1fr) 310px}
+.order-form-card{padding:28px}.form-grid .span2{grid-column:span 2}
+.estimate-side{align-self:start;position:sticky;top:110px}
+.price-note{background:#eef3f7;border:1px solid #d4e1eb;border-radius:7px;padding:12px 14px;font-size:12px;color:#5b7084;line-height:1.5}
+.price-note strong{color:#284661}
+.contact-details a,.contact-details p{overflow-wrap:anywhere}
+.info-caption{color:#698094;font-size:11px;line-height:1.5;margin-top:10px}
+.gallery-narrow{max-width:400px}
+.alt-services{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.alt-service{border:1px solid #dce5ee;border-radius:7px;padding:17px;background:#fff;display:flex;flex-direction:column;gap:8px;min-height:120px}
+.alt-service strong{font-size:14px;color:#2b455d}.alt-service span{font-size:12px;color:#81909f}
+.section-mini{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#315d88;font-weight:800;margin-bottom:12px}
+.demo-notice .notice-inner{font-size:11px}.copyright{font-size:11px;color:#8492a0}
+.logo-txt small{white-space:nowrap}
+.catalog-empty{font-size:14px}.modal-shell[hidden]{display:none}
+.notice-inner a{white-space:normal}
+@media(max-width:1050px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.alt-services{grid-template-columns:repeat(3,1fr)}.facts-grid{gap:0}}
+@media(max-width:760px){.container{width:min(100% - 34px,1190px)}.hero-grid{padding:39px 0}.hero-copy h1{font-size:37px}.hero-visual{min-height:265px}.work-grid{grid-template-columns:1fr}.work-photo{height:260px}.facts-grid{grid-template-columns:1fr}.fact{border-right:0;border-bottom:1px solid #d6e0e9;padding:14px 0}.fact:last-child{border:0}.alt-services{grid-template-columns:repeat(2,1fr)}.order-layout{display:block}.estimate-side{position:static;margin-top:20px}.catalog-tools{flex-wrap:wrap}.filter-list{gap:6px}.brand-mark{width:40px;height:40px}.hero-image-caption{display:block}.hero-image-caption small{display:block}.header-phone{font-size:13px}}
+@media(max-width:510px){.catalog-grid{grid-template-columns:1fr}.alt-services{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-buttons{display:flex;flex-wrap:wrap}.hero-copy h1{font-size:33px}.order-form-card{padding:18px}.form-grid{grid-template-columns:1fr}.form-grid .span2{grid-column:span 1}.logo{min-width:0}.logo-txt strong{font-size:11px}.logo-txt small{font-size:9px}.demo-notice .notice-inner{align-items:flex-start;padding-block:7px}}
+</style></head>
+<body>
+<div class="demo-notice"><div class="container notice-inner"><span><strong>Демонстрация нового сайта</strong> · Неофициальная версия, подготовлена для предложения компании</span><a href="https://ekskavator-kirov.ru/" rel="noopener noreferrer" target="_blank">Текущий сайт ↗</a></div></div>
+<header class="header" id="top">
+<div class="container header-inner">
+<a class="logo" href="#top" aria-label="Наверх"><img class="brand-mark" src="https://ekskavator-kirov.ru/images/tild6333-6439-4363-b538-326164303461__photo.png" alt="Логотип Альфаспецтехника"/><span class="logo-txt"><strong>АЛЬФАСПЕЦТЕХНИКА</strong><small>Аренда экскаваторов · Киров</small></span></a>
+<nav class="desktop-nav" aria-label="Разделы"><a href="#fleet">Каталог</a><a href="#work">О компании</a><a href="#additional">Другие услуги</a><a href="#order">Заявка</a><a href="#contacts">Контакты</a></nav>
+<div class="header-actions"><a class="header-phone" href="tel:+79225174066"><strong>+7 (922) 517-40-66</strong></a><a class="btn btn-dark small desktop-order" href="#order">Оставить заявку</a><button type="button" aria-expanded="false" aria-label="Открыть меню" class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button></div>
+</div>
+<nav class="mobile-nav" hidden id="mobileNav" aria-label="Мобильное меню"><a href="#fleet">Каталог техники</a><a href="#work">О компании</a><a href="#additional">Другая техника</a><a href="#order">Заявка</a><a href="#contacts">Контакты</a><a href="tel:+79225174066">Позвонить: +7 (922) 517-40-66</a></nav>
+</header>
+<main>
+<section class="hero-section" aria-labelledby="hero-heading"><div class="container hero-grid">
+<div class="hero-copy"><span class="hero-location">Киров · Аренда строительной техники</span><h1 id="hero-heading">Экскаваторы для любых земляных работ</h1>
+<p class="hero-description">Колёсные, гусеничные, мини-экскаваторы и экскаваторы-погрузчики. Поможем подобрать технику для котлована, траншеи или благоустройства участка.</p>
+<div class="hero-buttons"><a class="btn btn-primary" href="#fleet">Выбрать экскаватор</a><a class="btn btn-outline" href="#order">Рассчитать заказ</a></div>
+<div class="hero-facts"><span>Работа по договору</span><span>С НДС и без НДС</span><span>Гибкая система скидок</span></div></div>
+<div class="hero-visual"><div class="hero-image-wrap image-shell"><img fetchpriority="high" src="https://ekskavator-kirov.ru/images/tild3033-6430-4130-b665-656130363861__2019auto___trucks_ex.jpg" alt="Экскаватор на строительной площадке — фотография с сайта компании"/><div class="image-missing">Фотография с сайта Альфаспецтехника</div></div><div class="hero-image-caption"><strong>Экскаваторные работы в Кирове</strong><small>Фото с действующего сайта</small></div></div>
+</div></section>
+<section class="services-section"><div class="container services-grid">
+<a class="service-item" href="#fleet" data-filter-link="wheel"><span aria-hidden="true" class="service-symbol">↗</span><div><strong>Колёсный экскаватор</strong><small>Траншеи и городские объекты</small></div></a>
+<a class="service-item" href="#fleet" data-filter-link="track"><span aria-hidden="true" class="service-symbol">↗</span><div><strong>Гусеничный экскаватор</strong><small>Котлованы и сложные грунты</small></div></a>
+<a class="service-item" href="#fleet" data-filter-link="mini"><span aria-hidden="true" class="service-symbol">↗</span><div><strong>Мини-экскаватор</strong><small>Работы в тесных пространствах</small></div></a>
+<a class="service-item" href="#fleet" data-filter-link="backhoe"><span aria-hidden="true" class="service-symbol">↗</span><div><strong>Экскаватор-погрузчик</strong><small>Копка и погрузка</small></div></a>
+</div></section>
+<section class="facts-section"><div class="container facts-grid">
+<div class="fact"><img class="fact-icon" alt="" src="https://ekskavator-kirov.ru/images/tild3831-3965-4165-a261-646439343234__tilda_icons_40_print.png"/><div><strong>С 2002 года</strong><span>Опыт работы, по данным компании</span></div></div>
+<div class="fact"><img class="fact-icon" alt="" src="https://ekskavator-kirov.ru/images/tild6464-3137-4664-a237-656162636538__delivery.png"/><div><strong>30 единиц</strong><span>Заявленный размер автопарка</span></div></div>
+<div class="fact"><img class="fact-icon" alt="" src="https://ekskavator-kirov.ru/images/tild6432-6361-4263-a337-303864376630__11mu_man.png"/><div><strong>2500 клиентов</strong><span>Данные с действующего сайта</span></div></div>
+</div></section>
+<section class="section fleet-section" id="fleet" aria-labelledby="fleet-title"><div class="container">
+<div class="section-head"><div><p class="section-mini">Техника в аренду</p><h2 id="fleet-title">Выберите подходящий экскаватор</h2><p class="section-description">Характеристики и опубликованные цены взяты с действующего сайта. Наличие и актуальные тарифы уточняются при заказе.</p></div><span class="catalog-count"><strong id="visibleCount">4</strong> типа техники</span></div>
+<div class="catalog-tools"><div class="filter-list" id="filterList" role="group" aria-label="Фильтр"><button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">Все</button><button class="filter-chip" type="button" data-filter="wheel" aria-pressed="false">Колёсные</button><button class="filter-chip" type="button" data-filter="track" aria-pressed="false">Гусеничные</button><button class="filter-chip" type="button" data-filter="mini" aria-pressed="false">Мини</button><button class="filter-chip" type="button" data-filter="backhoe" aria-pressed="false">Погрузчики</button></div>
+<label class="search-box"><span aria-hidden="true">⌕</span><input id="catalogSearch" aria-label="Поиск по каталогу" placeholder="Название или задача" type="search"/></label></div>
+<div class="catalog-grid" id="catalogGrid" aria-live="polite"></div><p id="catalogEmpty" class="catalog-empty" hidden>По запросу ничего не найдено.</p>
+<div class="catalog-bottom"><p><strong>Не знаете, что выбрать?</strong> Опишите задачу. Специалист поможет определить необходимый тип техники.</p><a href="#order" class="text-link">Описать задачу →</a></div></div></section>
+<section class="section work-section" id="work"><div class="container work-grid"><div class="work-photo image-shell"><img loading="lazy" src="https://ekskavator-kirov.ru/images/tild3362-3633-4533-b963-666262326663__photo.png" alt="Изображение экскаваторной техники с действующего сайта"/><div class="image-missing">Фото техники с сайта компании</div></div>
+<div class="work-content"><p class="section-mini">О компании</p><h2>Земляные работы с подходящей техникой</h2><p>«АЛЬФАСПЕЦТЕХНИКА» оказывает услуги экскаваторов в Кирове. Среди задач — разработка котлованов и траншей под фундамент, инженерные сети и коммуникации, устройство выгребных ям и другие земляные работы.</p><p>Компания заявляет выезд специалистов на объект для оценки работ и подбора машины. Условия аренды согласовываются индивидуально.</p><div class="work-tags"><span>Котлованы</span><span>Фундаментные траншеи</span><span>Коммуникации</span><span>Земляные работы</span></div></div>
+</div></section>
+<section class="section benefits-section" id="additional"><div class="container"><div class="section-head"><div><p class="section-mini">Дополнительные направления</p><h2>Другая техника</h2><p class="section-description">На исходном сайте представлены ссылки на дополнительные категории техники. Наличие в собственном автопарке и условия предоставления уточняются отдельно.</p></div></div>
+<div class="alt-services"><a class="alt-service" href="http://avtokran-kirov.ru/" target="_blank" rel="noopener noreferrer"><strong>Автокраны ↗</strong><span>Перейти к категории</span></a><a class="alt-service" href="http://avtovyshka-kirov.ru/" target="_blank" rel="noopener noreferrer"><strong>Автовышки ↗</strong><span>Перейти к категории</span></a><a class="alt-service" href="http://buldozer-kirov.ru/" target="_blank" rel="noopener noreferrer"><strong>Бульдозеры ↗</strong><span>Перейти к категории</span></a><a class="alt-service" href="http://pogruzchik-kirov.ru/" target="_blank" rel="noopener noreferrer"><strong>Погрузчики ↗</strong><span>Перейти к категории</span></a><a class="alt-service" href="http://samosval-kirov.ru/" target="_blank" rel="noopener noreferrer"><strong>Самосвалы ↗</strong><span>Перейти к категории</span></a></div>
+</div></section>
+<section class="section order-section" id="order" aria-labelledby="orderTitle"><div class="container"><div class="section-head"><div><p class="section-mini">Подбор техники</p><h2 id="orderTitle">Запросить расчёт аренды</h2><p class="section-description">Укажите параметры, проверьте текст заявки и свяжитесь с компанией. Демонстрационная форма ничего не отправляет автоматически.</p></div></div>
+<div class="order-layout"><div class="order-form-card">
+<form id="orderForm" novalidate>
+<div class="form-intro"><span class="step-label">1. Техника и задача</span><h3>Что требуется</h3></div>
+<div class="form-grid"><label class="field span2"><span>Тип экскаватора <b>*</b></span><select id="equipmentSelect" required></select></label>
+<label class="field"><span>Примерная продолжительность, часов <b>*</b></span><div class="number-wrap"><button type="button" class="num-btn" id="hoursMinus" aria-label="Минус один час">−</button><input id="hoursInput" type="number" inputmode="numeric" min="1" max="500" value="8" required/><button type="button" class="num-btn" id="hoursPlus" aria-label="Плюс один час">+</button></div></label>
+<label class="field"><span>Вид работ</span><select id="taskSelect"><option value="">Указать в комментарии</option><option>Котлован под фундамент</option><option>Рытьё траншеи</option><option>Разработка грунта</option><option>Коммунальные сети</option><option>Выгребная яма</option><option>Погрузочные работы</option><option>Другое</option></select></label></div>
+<div class="form-divider"><span class="step-label">2. Где и когда</span><h3>Адрес объекта</h3></div>
+<div class="form-grid"><label class="field span2"><span>Адрес или ориентир <b>*</b></span><input id="addressInput" type="text" autocomplete="street-address" maxlength="200" placeholder="Киров, улица или населённый пункт" required/></label><label class="field"><span>Желаемая дата <b>*</b></span><input id="dateInput" type="date" required/></label><label class="field"><span>Время подачи</span><input id="timeInput" type="time" value="09:00"/></label><label class="field span2"><span>Комментарий</span><textarea id="commentInput" maxlength="600" placeholder="Объём работ, подъезд, глубина, особенности объекта…" rows="3"></textarea></label></div>
+<div class="form-divider"><span class="step-label">3. Связь</span><h3>Контакты заказчика</h3></div>
+<div class="form-grid"><label class="field"><span>Ваше имя <b>*</b></span><input id="nameInput" type="text" autocomplete="name" minlength="2" maxlength="80" placeholder="Имя" required/></label><label class="field"><span>Телефон <b>*</b></span><input id="phoneInput" type="tel" autocomplete="tel" inputmode="tel" maxlength="22" placeholder="+7 999 000-00-00" required/></label></div>
+<label class="consent"><input id="consentInput" type="checkbox" required/><span>Согласен сформировать текст заявки с указанными контактами для самостоятельной отправки компании.</span></label>
+<p class="validation-error" role="alert" id="formError" hidden></p>
+<button class="btn btn-primary submit-btn" type="submit">Сформировать заявку →</button>
+<p class="info-caption">Демо: сайт не хранит данные. Заявка открывается для проверки и отправки через SMS либо копирования.</p>
+</form></div>
+<aside class="estimate-side" aria-live="polite"><div class="estimate-title">Ваша заявка</div><div class="estimate-visual" id="estimateVisual"><div class="estimate-thumb image-shell"><img id="estimateThumb" src="https://ekskavator-kirov.ru/images/tild3362-3633-4533-b963-666262326663__photo.png" alt="Фото техники"/><div class="image-missing">🚜</div></div><div><span class="estimate-overline">Аренда экскаватора</span><strong id="estimateName">Экскаватор колёсный</strong><span class="estimate-overline">Тариф уточняется</span></div></div>
+<div class="estimate-line"><span>Продолжительность</span><strong id="estimateQty">8 часов</strong></div><div class="estimate-line"><span>Цена на исходном сайте</span><strong>1 500 ₽</strong></div>
+<div class="estimate-total"><span>Итоговая стоимость</span><strong>По запросу</strong><small>Уточняется после согласования условий</small></div>
+<div class="price-note"><strong>Почему без точной суммы?</strong><br/>На исходном сайте указана цена 1 500 ₽, но не указано, за какой период или объём. Не подменяем это неподтверждённым почасовым тарифом.</div>
+<a class="estimate-phone" href="tel:+79225174066">Позвонить для уточнения <strong>+7 (922) 517-40-66 ↗</strong></a></aside>
+</div></div></section>
+<section class="faq-section"><div class="container faq-grid"><div><h2>Частые вопросы</h2><p>Основные условия аренды и порядок обращения.</p><a class="text-link" href="tel:+79225174066">Задать вопрос по телефону →</a></div><div class="faq-items">
+<details><summary>Сколько стоит аренда экскаватора? <span>+</span></summary><p>На действующем сайте указана цена 1 500 ₽ для каждого из четырёх типов экскаваторов, но единица расчёта не уточнена. Итоговую цену, доставку и минимальную смену необходимо согласовать.</p></details>
+<details><summary>Работаете с НДС? <span>+</span></summary><p>Компания указывает работу по договору с НДС и без НДС.</p></details>
+<details><summary>Поможете выбрать технику для объекта? <span>+</span></summary><p>Согласно информации компании, специалисты могут выехать на объект для оценки объёма работ и выбора подходящего экскаватора.</p></details>
+<details><summary>Как оставить заявку? <span>+</span></summary><p>Заполните параметры и сформируйте текст. Вы сможете скопировать его или открыть приложение SMS для самостоятельной отправки на номер компании. Демоверсия не отправляет заявки автоматически.</p></details>
+</div></div></section>
+<section class="contact-section" id="contacts"><div class="container"><div class="contacts-top"><div><h2>Контакты</h2><p>Свяжитесь с «АЛЬФАСПЕЦТЕХНИКОЙ» для уточнения наличия, условий и стоимости аренды.</p><div class="contact-buttons"><a class="btn btn-primary" href="tel:+79225174066">Позвонить</a><a class="btn btn-outline" href="#order">Подготовить заявку</a></div></div>
+<div class="contacts-right"><a class="contact-main-number" href="tel:+79225174066">+7 (922) 517-40-66</a><div class="contact-details"><div><span>АДРЕС</span><p>Киров, ул. Советская, 51</p></div><div><span>РЕЖИМ РАБОТЫ</span><p>Пн–Пт, 8:00–17:00</p></div><div><span>ИСТОЧНИК ДАННЫХ</span><a href="https://ekskavator-kirov.ru/" target="_blank" rel="noopener noreferrer">ekskavator-kirov.ru ↗</a></div></div></div></div>
+<div class="footer-base"><div class="footer-brand">АЛЬФАСПЕЦТЕХНИКА</div><div><span>Аренда экскаваторов в Кирове</span><span>Демонстрационный редизайн · <a href="https://ekskavator-kirov.ru/" target="_blank" rel="noopener noreferrer">Исходный сайт ↗</a></span></div><a class="back-top" href="#top">Наверх ↑</a></div>
+</div></section>
+</main>
+<div class="modal-shell" hidden id="reviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Проверка заявки"><div class="modal-scrim" data-close-modal></div><div class="modal-panel"><button class="modal-close" type="button" id="closeModal" aria-label="Закрыть">×</button><div class="modal-success">✓</div><p class="section-kicker">Текст сформирован</p><h2>Проверьте заявку</h2><p class="modal-lead">Сообщение не отправлено. Можно скопировать текст или открыть приложение SMS для самостоятельной отправки.</p><div id="orderPreview" class="modal-preview" aria-live="polite"></div><div class="modal-actions"><a id="smsOrder" class="btn btn-primary" href="#">Открыть SMS ↗</a><button id="copyOrder" class="btn btn-outline" type="button">Скопировать</button><a class="btn btn-outline" href="tel:+79225174066">Позвонить</a></div><p class="modal-note">Данные остаются в браузере. Подтверждение заказа, стоимости и доступности — только после общения с компанией.</p></div></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div><a href="#order" class="sticky-mobile-order">Запросить расчёт</a>
+<script>
+(function(){
+"use strict";
+var data=[
+{id:"wheel",name:"Экскаватор колёсный",category:"wheel",tag:"Колёсный экскаватор",spec:"Глубина копания — 5,5 м · Ковш — 0,65 м³",use:"Земляные работы и траншеи",photo:"https://ekskavator-kirov.ru/images/tild3362-3633-4533-b963-666262326663__photo.png"},
+{id:"track",name:"Экскаватор гусеничный",category:"track",tag:"Гусеничный экскаватор",spec:"Глубина копания — 6,2 м · Ковш — 0,8 м³",use:"Котлованы и разработка грунта",photo:""},
+{id:"mini",name:"Мини-экскаватор",category:"mini",tag:"Мини-экскаватор",spec:"Ковши — 30, 40, 56 см · Погрузка до 2,5 м",use:"Работы на ограниченной площадке",photo:""},
+{id:"backhoe",name:"Экскаватор-погрузчик",category:"backhoe",tag:"Экскаватор-погрузчик",spec:"Глубина копания — 5 м · Фронтальный ковш — 1 м³",use:"Копка, погрузка и перемещение грунта",photo:""}];
+var state={filter:"all",query:"",preview:""}, el=function(s){return document.querySelector(s)}, all=function(s){return Array.from(document.querySelectorAll(s))};
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function render(){
+ var filtered=data.filter(function(v){return (state.filter==="all"||v.category===state.filter)&&(v.name+" "+v.use+" "+v.spec).toLowerCase().includes(state.query)});
+ el("#visibleCount").textContent=filtered.length;
+ el("#catalogEmpty").hidden=filtered.length>0;
+ el("#catalogGrid").innerHTML=filtered.map(function(v){
+ var picture=v.photo?'<div class="machine-picture image-shell"><img loading="lazy" src="'+esc(v.photo)+'" alt="Изображение с сайта компании"><div class="image-missing">Фото с сайта компании</div><span class="picture-label">'+esc(v.tag)+'</span></div>':'<div class="machine-picture no-photo"><b aria-hidden="true">▣</b><strong>'+esc(v.tag)+'</strong><small>Фото конкретной техники не опубликовано</small></div>';
+ return '<article class="machine-card">'+picture+'<div class="machine-body"><h3>'+esc(v.name)+'</h3><p>'+esc(v.use)+'</p><div class="machine-spec">'+esc(v.spec)+'</div><div class="machine-details"><div class="machine-rate"><small>На сайте указано</small><strong>1 500 ₽</strong></div><button type="button" class="machine-cta" data-id="'+v.id+'">В заявку →</button></div></div></article>';
+ }).join("");
+ all(".machine-cta").forEach(function(b){b.addEventListener("click",function(){el("#equipmentSelect").value=b.dataset.id;estimate();el("#order").scrollIntoView({behavior:"smooth",block:"start"});notify("Техника выбрана")})});
+}
+function filter(key){state.filter=key;all(".filter-chip").forEach(function(b){var active=b.dataset.filter===key;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});render()}
+function estimate(){var v=data.find(function(x){return x.id===el("#equipmentSelect").value})||data[0];el("#estimateName").textContent=v.name;el("#estimateQty").textContent=el("#hoursInput").value+" ч";el("#estimateThumb").src=v.photo||"https://ekskavator-kirov.ru/images/tild3033-6430-4130-b665-656130363861__2019auto___trucks_ex.jpg";el("#estimateThumb").alt=v.photo?"Фото с сайта компании":"Общее фото с сайта компании"}
+function valid(){
+ var fields=[["#addressInput","Укажите адрес объекта."],["#dateInput","Выберите дату."],["#nameInput","Укажите имя."],["#phoneInput","Укажите телефон."]];
+ function fail(msg,selector){el("#formError").hidden=false;el("#formError").textContent=msg;el(selector).focus();return false}
+ el("#formError").hidden=true;
+ if(!(Number(el("#hoursInput").value)>=1&&Number(el("#hoursInput").value)<=500))return fail("Укажите от 1 до 500 часов.","#hoursInput");
+ for(var i=0;i<fields.length;i++)if(!el(fields[i][0]).value.trim())return fail(fields[i][1],fields[i][0]);
+ if(el("#nameInput").value.trim().length<2)return fail("Укажите имя от 2 символов.","#nameInput");
+ var digits=(el("#phoneInput").value.match(/\d/g)||[]).length;if(digits<10||digits>15)return fail("Укажите корректный телефон.","#phoneInput");
+ var date=el("#dateInput").value;if(date<el("#dateInput").min)return fail("Дата не может быть в прошлом.","#dateInput");
+ if(!el("#consentInput").checked)return fail("Подтвердите согласие на формирование заявки.","#consentInput");
+ return true;
+}
+function message(){
+ var d=data.find(function(x){return x.id===el("#equipmentSelect").value})||data[0];
+ return ["ЗАПРОС АРЕНДЫ ЭКСКАВАТОРА — АЛЬФАСПЕЦТЕХНИКА","",
+ "Техника: "+d.name,"Вид работ: "+(el("#taskSelect").value||"Уточнить"),"Планируемое время работы: "+el("#hoursInput").value+" ч",
+ "Адрес: "+el("#addressInput").value.trim(),"Дата: "+el("#dateInput").value,"Время: "+(el("#timeInput").value||"По согласованию"),
+ "Комментарий: "+(el("#commentInput").value.trim()||"Нет"),"",
+ "Заказчик: "+el("#nameInput").value.trim(),"Телефон: "+el("#phoneInput").value.trim(),"",
+ "Прошу подтвердить доступность техники, единицу тарифа, цену, стоимость подачи и минимальную смену."].join("\n");
+}
+var timer;
+function notify(msg){var t=el("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(timer);timer=setTimeout(function(){t.classList.remove("show")},2800)}
+function close(){el("#reviewModal").hidden=true;el("#reviewModal").setAttribute("aria-hidden","true");document.body.style.overflow=""}
+async function copyText(s){if(navigator.clipboard&&isSecureContext)return navigator.clipboard.writeText(s);var t=document.createElement("textarea");t.value=s;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+function init(){
+ el("#equipmentSelect").innerHTML=data.map(function(d){return '<option value="'+d.id+'">'+esc(d.name)+'</option>'}).join("");
+ var now=new Date(),today=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);el("#dateInput").min=today;
+ all(".filter-chip").forEach(function(b){b.addEventListener("click",function(){filter(b.dataset.filter)})});
+ all("[data-filter-link]").forEach(function(a){a.addEventListener("click",function(){filter(a.dataset.filterLink)})});
+ el("#catalogSearch").addEventListener("input",function(e){state.query=e.target.value.trim().toLowerCase();render()});
+ el("#equipmentSelect").addEventListener("change",estimate);el("#hoursInput").addEventListener("input",estimate);
+ ["Minus","Plus"].forEach(function(x){el("#hours"+x).addEventListener("click",function(){var n=Number(el("#hoursInput").value)||8;el("#hoursInput").value=Math.max(1,Math.min(500,n+(x==="Minus"?-1:1)));estimate()})});
+ el("#menuToggle").addEventListener("click",function(){var m=el("#mobileNav");m.hidden=!m.hidden;el("#menuToggle").setAttribute("aria-expanded",String(!m.hidden))});
+ all("#mobileNav a").forEach(function(a){a.addEventListener("click",function(){el("#mobileNav").hidden=true;el("#menuToggle").setAttribute("aria-expanded","false")})});
+ el("#orderForm").addEventListener("submit",function(e){e.preventDefault();if(!valid())return;state.preview=message();el("#orderPreview").textContent=state.preview;el("#smsOrder").href="sms:+79225174066?body="+encodeURIComponent(state.preview);el("#reviewModal").hidden=false;el("#reviewModal").setAttribute("aria-hidden","false");document.body.style.overflow="hidden";el("#closeModal").focus()});
+ el("#closeModal").addEventListener("click",close);el("[data-close-modal]").addEventListener("click",close);
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+ el("#copyOrder").addEventListener("click",function(){copyText(state.preview).then(function(){notify("Текст скопирован")}).catch(function(){notify("Не удалось скопировать")})});
+ document.addEventListener("error",function(e){if(e.target.tagName==="IMG"&&e.target.closest(".image-shell"))e.target.style.display="none"},true);
+ render();estimate();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+</script>
+</body></html>
